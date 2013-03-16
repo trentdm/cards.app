@@ -7,7 +7,6 @@
 }
 
 function AppViewModel() {
-	this.date = moment().format();
 	this.rounds = ko.observableArray([new round(1)]);
 	this.players = ko.observableArray();
     this.notification = ko.observable('');    

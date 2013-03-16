@@ -54,7 +54,7 @@ var print_visits = function(req, res){
 var saveViewModel = function(req, res) {
 	require('mongodb').connect(mongourl, function(err, conn){
 		conn.collection('viewModels', function(err, coll){
-			object_to_insert = { 'viewModel': req.viewModel, 'date': new Date() };
+			object_to_insert = { 'viewModel': req.body.viewModel, 'date': new Date() };
 			coll.insert( object_to_insert, {safe:true}, function(err){ 
 				alert('Scores saved!');
 	        });
