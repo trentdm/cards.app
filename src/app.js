@@ -56,7 +56,6 @@ var saveViewModel = function(req, res) {
 		conn.collection('viewModels', function(err, coll){
 			object_to_insert = { 'viewModel': req.body.viewModel, 'date': new Date() };
 			coll.insert( object_to_insert, {safe:true}, function(err){ 
-				alert('Scores saved!');
 	        });
 		});
 	});
@@ -65,7 +64,7 @@ var saveViewModel = function(req, res) {
 var viewViewModels = function(req, res) {
 	require('mongodb').connect(mongourl, function(err, conn){
 		conn.collection('viewModels', function(err, coll){
-			coll.find({}, {limit:10, sort:[['_id','desc']]}, function(err, cursor){
+			coll.find({}, {limit:3, sort:[['_id','desc']]}, function(err, cursor){
                 cursor.toArray(function(err, items){
                     res.writeHead(200, {'Content-Type': 'text/plain'});
                     for(i=0; i<items.length;i++){

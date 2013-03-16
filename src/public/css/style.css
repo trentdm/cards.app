@@ -91,7 +91,7 @@ body {
 	font-weight: bold;
 }
 
-.header,.player,#newPlayer {
+.header,.player,#newPlayer, #viewScores {
 	text-align: left;
 	border-bottom: 2px dashed lightgrey;
 	margin: 0 10px;
