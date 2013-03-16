@@ -26,13 +26,9 @@ var generate_mongo_url = function(obj){
 var mongourl = generate_mongo_url(mongo);
 
 var record_visit = function(req, res){
-    /* Connect to the DB and auth */
     require('mongodb').connect(mongourl, function(err, conn){
         conn.collection('ips', function(err, coll){
-            /* Simple object to insert: ip address and date */
             object_to_insert = { 'ip': req.connection.remoteAddress, 'ts': new Date() };
-            /* Insert the object then print in response */
-            /* Note the _id has been created */
             coll.insert( object_to_insert, {safe:true}, function(err){          
             });
         });
@@ -40,7 +36,6 @@ var record_visit = function(req, res){
 };
 
 var print_visits = function(req, res){
-    /* Connect to the DB and auth */
     require('mongodb').connect(mongourl, function(err, conn){
         conn.collection('ips', function(err, coll){
             coll.find({}, {limit:10, sort:[['_id','desc']]}, function(err, cursor){
@@ -56,32 +51,32 @@ var print_visits = function(req, res){
     });
 };
 
-//var port = (process.env.VMC_APP_PORT || 3000); //ctrl+7 to comment
-//var host = (process.env.VCAP_APP_HOST || 'localhost');
-//var http = require('http');
-//http.createServer(function (req, res) {
-//	params = require('url').parse(req.url);
-//    if(params.pathname === '/history') {
-//        print_visits(req, res);
-//    }
-//    else{
-//        record_visit(req, res);
-//    }
-//}).listen(port, host);
+var saveViewModel = function(req, res) {
+	require('mongodb').connect(mongourl, function(err, conn){
+		conn.collection('viewModels', function(err, coll){
+			object_to_insert = { 'viewModel': req.vm, 'date': new Date() };
+			coll.insert( object_to_insert, {safe:true}, function(err){ 
+				alert('Scores saved!');
+	        });
+		});
+	});
+};
 
 var express = require('express');
 var app = express();
 app.use('/public', express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/public'));
-app.get('/history', function(req, res){
-		print_visits(req, res);
-		record_visit(req, res);
-	});
-app.get('/hello.txt', function(req, res){
-	  res.send('Hello wald');
-	});
+app.use(express.bodyParser());
+
+app.get('/load', function(req, res){	
+});
+
+app.post('/save', function(req, res) {
+	saveViewModel(req, res);	
+});
+
 app.use(function(err, req, res, next){
 	  console.error(err.stack);
 	  res.send(500, 'Something broke!');
-	});
+});
 app.listen(3000);

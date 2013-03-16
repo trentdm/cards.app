@@ -213,7 +213,12 @@ function initializePopbox() {
 };
 
 function saveScores() {
-	persistScores();
+	//rearrange viewmodel to actually save scores
+	persistence.saveScores(viewModel);
+};
+
+function loadScores() {
+	persistence.loadScores();
 };
 
 //todo: site icon
