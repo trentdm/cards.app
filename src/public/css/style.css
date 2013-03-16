@@ -1,0 +1,275 @@
+/* css reset
+*/
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,
+p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,
+dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,
+var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,
+legend,table,caption,tbody,tfoot,thead,tr,th,td,article,
+aside,canvas,details,embed,figure,figcaption,footer,header,
+hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video
+	{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+}
+
+/* common elements */
+html,body {
+	height: 100%;
+}
+
+body {
+	width: 100%;
+	min-width: 600px;
+	font-family: Verdana;
+	color: dimgray;
+	background-color: grey;
+}
+
+/* project elements */
+#container {
+	width: 90%;
+	min-height: 100%;
+	margin: 0 auto;
+	padding-top: 20px;
+	background-color: white;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+#header,#intro,#notifier,#board,#footer {
+	margin: 0px 20px 15px 20px;
+}
+
+#header h1 {
+	float:left;
+}
+
+#header .popbox {
+	float:right;
+}
+
+#intro {
+	clear:both;
+	visibility: visible;
+	height: auto;
+}
+
+#intro p {
+	padding: 15px 0 0 0;
+}
+
+#notifier {
+	text-align: center;	
+}
+
+/* realignment to match board contents */
+#header h1,#intro p,#notifier h3,#footer a {
+	margin: 0 10px;
+}
+
+#board {
+	font-size: 1em;
+	vertical-align: text-top;
+	background-color: #D7E5EF;
+	-moz-border-radius-topleft: 25px;
+	-webkit-border-top-left-radius: 25px;
+	border-top-left-radius: 25px;
+	-moz-border-radius-topright: 25px;
+	-webkit-border-top-right-radius: 25px;
+	border-top-right-radius: 25px;
+}
+
+#footer {
+	clear: both;
+	margin-top: 20px;
+	text-align: left;
+}
+
+.header {
+	font-weight: bold;
+}
+
+.header,.player,#newPlayer {
+	text-align: left;
+	border-bottom: 2px dashed lightgrey;
+	margin: 0 10px;
+}
+
+.name,.total {
+	display: inline-block;
+	width: 9%;
+	margin: 3px;
+}
+
+.rounds,.scores {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+}
+
+.round {
+	display: inline-block;
+	text-align: center;
+	width: 30px;
+	margin: 3px;
+}
+
+.score {
+	display: inline-block;
+	text-align: center;
+	cursor: pointer; cursor: hand;
+	width: 25px;
+	margin: 3px 8px 3px 3px;
+	min-height: 15px;
+	min-width: 15px;	
+}
+
+.total {
+	text-align: right;
+}
+
+input {
+	width: 100%;
+	font-size: 1em;
+	color: dimgray;
+	text-align: center;
+	border: 2px solid white; 
+    -webkit-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    -moz-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    background: rgba(255,255,255,0.5);
+}
+
+input[type="button"] {
+	cursor: pointer; cursor: hand;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {    
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.prefOn {
+	background: lemonchiffon;
+}
+
+.box {
+	min-width: 112px;
+}
+
+.box input {	
+	width: 70px;
+	display: block;
+	margin: 3px auto;
+}
+
+.popbox a:link {
+	color: grey;
+}
+
+.popbox a:visited {
+	color: grey;
+}
+
+.popbox a:hover {
+color: purple;
+-webkit-transition:color 500ms ease-in;
+-moz-transition:color 500ms ease-in;
+-o-transition:color 500ms ease-in;
+transition:color 500ms ease-in;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+/* button 
+---------------------------------------------- */
+.button {
+	display: inline-block;
+	zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
+	*display: inline;
+	vertical-align: baseline;
+	margin: 0 2px;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	font: 14px/100% Arial, Helvetica, sans-serif;
+	padding: .5em 2em .55em;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+	-webkit-border-radius: .5em;
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+	-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+}
+
+.button:hover {
+	text-decoration: none;
+}
+
+.button:active {
+	position: relative;
+	top: 1px;
+}
+
+.bigrounded {
+	-webkit-border-radius: 2em;
+	-moz-border-radius: 2em;
+	border-radius: 2em;
+}
+
+.medium {
+	font-size: 12px;
+	padding: .4em 1.5em .42em;
+}
+
+.small {
+	font-size: 11px;
+	padding: .2em 1em .275em;
+}
+
+/* gray */
+.gray {
+	color: #e9e9e9;
+	border: solid 1px #555;
+	background: #6e6e6e;
+	background: -webkit-gradient(linear, left top, left bottom, from(#888),
+		to(#575757) );
+	background: -moz-linear-gradient(top, #888, #575757);
+	filter: progid : DXImageTransform.Microsoft.gradient ( startColorstr =
+		'#888888', endColorstr = '#575757' );
+}
+
+.gray:hover {
+	background: #616161;
+	background: -webkit-gradient(linear, left top, left bottom, from(#757575),
+		to(#4b4b4b) );
+	background: -moz-linear-gradient(top, #757575, #4b4b4b);
+	filter: progid : DXImageTransform.Microsoft.gradient ( startColorstr =
+		'#757575', endColorstr = '#4b4b4b' );
+}
+
+.gray:active {
+	color: #afafaf;
+	background: -webkit-gradient(linear, left top, left bottom, from(#575757),
+		to(#888) );
+	background: -moz-linear-gradient(top, #575757, #888);
+	filter: progid : DXImageTransform.Microsoft.gradient ( startColorstr =
+		'#575757', endColorstr = '#888888' );
+}

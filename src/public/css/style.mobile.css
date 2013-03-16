@@ -1,0 +1,21 @@
+body {
+	min-width: 320px;
+}
+
+#container {
+	width: 100%;
+	padding-top: 15px;
+}
+
+#header,#intro,#notifier,#board,#footer {
+	margin: 0 5px 5px 5px;
+}
+
+#intro {
+	visibility: hidden;
+	height: 0;
+}
+
+#footer {
+	padding-top: 15px;
+}

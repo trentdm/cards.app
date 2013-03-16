@@ -1,0 +1,1 @@
+Cards is used for keeping track of players' scores while playing card games. It is a node.js app that uses mongoDb for persistence of users and scores.
