@@ -54,10 +54,26 @@ var print_visits = function(req, res){
 var saveViewModel = function(req, res) {
 	require('mongodb').connect(mongourl, function(err, conn){
 		conn.collection('viewModels', function(err, coll){
-			object_to_insert = { 'viewModel': req.vm, 'date': new Date() };
+			object_to_insert = { 'viewModel': req.viewModel, 'date': new Date() };
 			coll.insert( object_to_insert, {safe:true}, function(err){ 
 				alert('Scores saved!');
 	        });
+		});
+	});
+};
+
+var viewViewModels = function(req, res) {
+	require('mongodb').connect(mongourl, function(err, conn){
+		conn.collection('viewModels', function(err, coll){
+			coll.find({}, {limit:10, sort:[['_id','desc']]}, function(err, cursor){
+                cursor.toArray(function(err, items){
+                    res.writeHead(200, {'Content-Type': 'text/plain'});
+                    for(i=0; i<items.length;i++){
+                        res.write(JSON.stringify(items[i]) + "\n");
+                    }
+                    res.end();
+                });
+            });
 		});
 	});
 };
@@ -68,11 +84,13 @@ app.use('/public', express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/public'));
 app.use(express.bodyParser());
 
-app.get('/load', function(req, res){	
-});
-
 app.post('/save', function(req, res) {
 	saveViewModel(req, res);	
+});
+app.get('/view', function(req, res) {
+	viewViewModels(req, res);	
+});
+app.get('/load', function(req, res){	
 });
 
 app.use(function(err, req, res, next){

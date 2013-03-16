@@ -7,6 +7,7 @@
 }
 
 function AppViewModel() {
+	this.date = moment().format();
 	this.rounds = ko.observableArray([new round(1)]);
 	this.players = ko.observableArray();
     this.notification = ko.observable('');    
@@ -213,8 +214,11 @@ function initializePopbox() {
 };
 
 function saveScores() {
-	//rearrange viewmodel to actually save scores
-	persistence.saveScores(viewModel);
+	persistence.saveScores(ko.toJSON(viewModel));
+};
+
+function viewScores() {
+	persistence.viewScores();
 };
 
 function loadScores() {
