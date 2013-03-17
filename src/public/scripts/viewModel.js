@@ -1,8 +1,6 @@
 ﻿function initViewModel() {
-    viewModel = new AppViewModel();
-    
-    ko.applyBindings(viewModel);
-    
+    viewModel = new AppViewModel();    
+    ko.applyBindings(viewModel);    
     initializePopbox();
 }
 
@@ -212,23 +210,40 @@ function initializePopbox() {
    });
 };
 
-function saveScores() {
-	persistence.saveScores(ko.toJSON(viewModel));
+function goHome() {
+	self.location='index.html';
 };
 
-function viewScores() {
-	persistence.viewScores();
+function saveScores() {
+	var trimmedViewModel = removeEmptyRounds(viewModel);
+	var vm = ko.toJSON(trimmedViewModel);
+	persistence.saveScores(vm, notifiyScoresSaved());
 };
+
+function removeEmptyRounds(vm) {
+	vm.rounds.pop();
+	
+	for(var i = 0; i < vm.players().length; i++) {
+		vm.players()[i].scores.pop();
+	}
+	
+	return vm;
+}
+
+function notifiyScoresSaved(){
+	$('#notification').text('Scores saved!');
+}
 
 function loadScores() {
-	persistence.loadScores();
+	persistence.loadScores(initLoadedViewModel.bind());	
 };
 
-//todo: site icon
-//todo: rearrange players by drag and drop -- see http://jsfiddle.net/rniemeyer/hw9B2/
-//todo: (optional) change element sizes for mobile?
-//todo: (optional) upload scores to database for persistent tracking
-//todo: (optional) visualization of tracked scores
-
-//todo: newplayer input is disabled after first round (click to edit again)
-//todo: (optional) move focus to first player, first enabled score after adding round (hasFocus: bool - would add to score func)
+function initLoadedViewModel(data){
+	var parsedData = JSON.parse(data);
+	var parsedViewModel = JSON.parse(parsedData.viewModel);
+	
+	viewModel = ko.mapping.fromJS(parsedViewModel);
+	
+	ko.applyBindings(viewModel);
+	initializePopbox();
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>	
+	<link href="css/popbox.css" rel="stylesheet" type="text/css"
+		media="screen, handheld, print, projection" />
+	<link href="css/style.css" rel="stylesheet" type="text/css"
+		media="screen, handheld, print, projection" />
+	<link href="css/style.mobile.css" rel="stylesheet"
+		media="screen and (min-device-width:320px)" />
+	<link href="css/style.css" rel="stylesheet"
+		media="screen and (min-device-width:768px) and (min-width:768px), print, projection" />
+	<!--[if lt IE 9]> <link href="css/desktop.css" rel="stylesheet" media="all" /> <![endif]-->
+	<script type="text/javascript" src="scripts/jquery.min.js"></script>
+	<script type="text/javascript" src="scripts/knockout-2.1.0.js"></script>
+	<script type="text/javascript" src="scripts/knockout-sortable.min.js"></script>
+	<script type="text/javascript" src="scripts/knockout.mapping.js"></script>
+	<script type="text/javascript" src="scripts/popbox.min.js"></script>	
+	<script type="text/javascript" src="scripts/persistence.js"></script>
+	<script type="text/javascript" src="scripts/viewModel.js"></script>	
+	<title>Cards</title>
+</head>
+<body onload='loadScores()'>
+	<div id='container'>
+		<div id='header'>
+			<h1 data-bind='click: goHome'>Cards</h1>
+			<div class='popbox'>
+			    <a class='open' href='#'>preferences</a>
+			
+			    <div class='collapse'>
+			      <div class='box'>
+			        <div class='arrow'></div>
+			        <div class='arrow-border'></div>
+			
+			        <p>Best Score</p>
+			        <input type='button' value='Highest' 
+			        	data-bind='css: { prefOn: isHighBestScore }' />
+        			<input type='button' value='Lowest' 
+        				data-bind='css: { prefOn: !isHighBestScore() }' />
+        				
+					<a href='#' class='close'>Close</a>
+			      </div>
+			    </div>
+		  	</div>			
+		</div>
+		
+		<div id='intro'>
+			<p>Previous game scores.</p>
+		</div>
+		
+		<div id='notifier'>
+			<h3 id='notification' data-bind='text: notification, fadeVisible: isHighBestScore()' />
+		</div>
+		
+		<div id='board'>
+			<div class='header'>
+				<div class='name'><p>Name</p></div>
+				<div class='rounds' data-bind='foreach: rounds'>
+					<div class='round'><p data-bind='text: val' /></div>
+				</div>
+				<div class='total'><p>Total</p></div>
+			</div>
+			
+			<div id='players' data-bind='foreach: players'>
+				<div class='player'>
+					<div class='name'>
+						<input data-bind='value: name' />
+					</div>
+					
+					<div class='scores' data-bind='foreach: scores'>
+						<div class='score'>							
+							<input type='number' data-bind='value: val' />
+						</div>
+					</div>
+					
+					<div class='total'>
+						<p data-bind='text: total' />
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<div id="footer">
+			<a href="#" id="newGame" class="left button gray bigrounded" data-bind='click: goHome'>New Game</a>
+		</div>
+	</div>
+</body>
+</html>

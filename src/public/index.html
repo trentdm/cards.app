@@ -13,8 +13,8 @@
 	<script type="text/javascript" src="scripts/jquery.min.js"></script>
 	<script type="text/javascript" src="scripts/knockout-2.1.0.js"></script>
 	<script type="text/javascript" src="scripts/knockout-sortable.min.js"></script>
+	<script type="text/javascript" src="scripts/knockout.mapping.js"></script>
 	<script type="text/javascript" src="scripts/popbox.min.js"></script>
-	<script type="text/javascript" src="scripts/moment.min.js"></script>	
 	<script type="text/javascript" src="scripts/persistence.js"></script>
 	<script type="text/javascript" src="scripts/viewModel.js"></script>	
 	<title>Cards</title>
@@ -22,7 +22,7 @@
 <body onload="initViewModel()">
 	<div id="container">
 		<div id="header">
-			<h1>Cards</h1>
+			<h1 data-bind="click: goHome">Cards</h1>
 			<div class='popbox'>
 			    <a class='open' href='#'>preferences</a>
 			
@@ -84,15 +84,13 @@
 					<input type="text" data-bind="value: newPlayerName" placeholder="New Player"/>
 				</div>
 			</div>
-			
-			<div id="viewScores">
-			</div>
 		</div>
 	
 		<div id="footer">
 			<a href="#" id="newGame" class="left button gray bigrounded" data-bind='click: newGame'>New Game</a>
 			<a href="#" id="newGame" class="right button gray bigrounded" data-bind='click: saveScores'>Save Scores</a>
-			<a href="#" id="newGame" class="right button gray bigrounded"	data-bind='click: viewScores'>View Scores</a>
+			<a href="/view.html" id="newGame" class="right button gray bigrounded">View Scores</a>
+			<!--  <a href="#" id="newGame" class="right button gray bigrounded"	data-bind='click: viewScores'>View Scores</a> -->
 			<!--  <a href="#" id="newGame" class="right button gray bigrounded"	data-bind='click: loadScores'>Load Scores</a> -->
 		</div>
 	</div>

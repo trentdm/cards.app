@@ -16,6 +16,11 @@ body {
 	height: 0;
 }
 
+.score {
+	width: 30px;
+	min-width: 20px;	
+}
+
 #footer {
 	padding-top: 15px;
 }

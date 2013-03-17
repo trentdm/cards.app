@@ -25,32 +25,6 @@ var generate_mongo_url = function(obj){
 };
 var mongourl = generate_mongo_url(mongo);
 
-var record_visit = function(req, res){
-    require('mongodb').connect(mongourl, function(err, conn){
-        conn.collection('ips', function(err, coll){
-            object_to_insert = { 'ip': req.connection.remoteAddress, 'ts': new Date() };
-            coll.insert( object_to_insert, {safe:true}, function(err){          
-            });
-        });
-    });
-};
-
-var print_visits = function(req, res){
-    require('mongodb').connect(mongourl, function(err, conn){
-        conn.collection('ips', function(err, coll){
-            coll.find({}, {limit:10, sort:[['_id','desc']]}, function(err, cursor){
-                cursor.toArray(function(err, items){
-                    res.writeHead(200, {'Content-Type': 'text/plain'});
-                    for(i=0; i<items.length;i++){
-                        res.write(JSON.stringify(items[i]) + "\n");
-                    }
-                    res.end();
-                });
-            });
-        });
-    });
-};
-
 var saveViewModel = function(req, res) {
 	require('mongodb').connect(mongourl, function(err, conn){
 		conn.collection('viewModels', function(err, coll){
@@ -61,10 +35,10 @@ var saveViewModel = function(req, res) {
 	});
 };
 
-var viewViewModels = function(req, res) {
+var loadViewModel = function(req, res) {
 	require('mongodb').connect(mongourl, function(err, conn){
 		conn.collection('viewModels', function(err, coll){
-			coll.find({}, {limit:3, sort:[['_id','desc']]}, function(err, cursor){
+			coll.find({}, {limit:1, sort:[['_id','desc']]}, function(err, cursor){
                 cursor.toArray(function(err, items){
                     res.writeHead(200, {'Content-Type': 'text/plain'});
                     for(i=0; i<items.length;i++){
@@ -86,10 +60,8 @@ app.use(express.bodyParser());
 app.post('/save', function(req, res) {
 	saveViewModel(req, res);	
 });
-app.get('/view', function(req, res) {
-	viewViewModels(req, res);	
-});
-app.get('/load', function(req, res){	
+app.get('/load', function(req, res) {
+	loadViewModel(req, res);	
 });
 
 app.use(function(err, req, res, next){
@@ -97,3 +69,8 @@ app.use(function(err, req, res, next){
 	  res.send(500, 'Something broke!');
 });
 app.listen(3000);
+
+//todo: site icon
+//todo: rearrange players by drag and drop -- see http://jsfiddle.net/rniemeyer/hw9B2/
+//todo: (optional) change element sizes for mobile?
+//todo: (optional) visualization of tracked scores
