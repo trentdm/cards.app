@@ -61,7 +61,7 @@ exports.loadNextViewModel = function(req, res) {
 	mongodb.connect(mongourl, function(err, conn){
 		conn.collection('viewModels', function(err, coll){
 			var id = new bson.ObjectID(req.params.id);
-			coll.findOne({'_id': {$gte: id}}, {limit:1, sort:[['_id','desc']]}, function(err, cursor){
+			coll.findOne({'_id': {$gt: id}}, {limit:1, sort:[['_id','asc']]}, function(err, cursor){
 				res.send(JSON.stringify(cursor));
             });
 		});
@@ -72,7 +72,7 @@ exports.loadPrevViewModel = function(req, res) {
 	mongodb.connect(mongourl, function(err, conn){
 		conn.collection('viewModels', function(err, coll){
 			var id = new bson.ObjectID(req.params.id);
-			coll.findOne({'_id': {$lte: id}}, {limit:1, sort:[['_id','asc']]}, function(err, cursor){
+			coll.findOne({'_id': {$lt: id}}, {limit:1, sort:[['_id','desc']]}, function(err, cursor){
 				res.send(JSON.stringify(cursor));
             });
 		});

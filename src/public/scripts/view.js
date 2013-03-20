@@ -32,8 +32,13 @@ function loadNextScores() {
 }
 
 function loadNewScores(data) {
+	if(data == 'null') {
+		viewModel.notification('No game found.');
+		return;
+	}
+	
 	vmId = getId(data);
-	var newVm = getViewModel(data);
+	var newVm = getViewModel(data);	
 	
 	viewModel.rounds(newVm.rounds);
 	viewModel.players(newVm.players);
