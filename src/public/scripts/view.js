@@ -6,6 +6,11 @@ function initLoadedViewModel() {
 };
 
 function initLoadedScores(data) {
+	if(data == 'null') {
+		viewModel.notification('No game found.');
+		return;
+	}
+	
 	vmId = getId(data);
 	viewModel = getViewModel(data);
 	ko.applyBindings(viewModel);
