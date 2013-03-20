@@ -16,10 +16,11 @@
 	<script type="text/javascript" src="scripts/knockout.mapping.js"></script>
 	<script type="text/javascript" src="scripts/popbox.min.js"></script>	
 	<script type="text/javascript" src="scripts/persistence.js"></script>
-	<script type="text/javascript" src="scripts/viewModel.js"></script>	
-	<title>Cards</title>
+	<script type="text/javascript" src="scripts/cards.js"></script>
+	<script type="text/javascript" src="scripts/view.js"></script>		
+	<title>Cards - Previous Games</title>
 </head>
-<body onload='loadScores()'>
+<body onload='initLoadedViewModel()'>
 	<div id='container'>
 		<div id='header'>
 			<h1 data-bind='click: goHome'>Cards</h1>
@@ -48,7 +49,11 @@
 		</div>
 		
 		<div id='notifier'>
-			<h3 id='notification' data-bind='text: notification, fadeVisible: isHighBestScore()' />
+		<ul>
+			<li><a href='#' data-bind='click: loadPreviousScores'>Previous Game</a></li>
+			<li><h3 id='notification' data-bind='text: notification, fadeVisible: isHighBestScore()' /></li>
+			<li><a href='#' data-bind='click: loadNextScores'>Next Game</a></li>
+		</ul>
 		</div>
 		
 		<div id='board'>

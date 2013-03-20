@@ -4,14 +4,22 @@
 		$.post('/save',	{ viewModel: vm }, callBack, 'json');
 	};
 	
-	persistence.loadScores = function(callBack){
+	persistence.loadRecentScores = function(callBack){
 		$.get('/load', function (data) {
 			success: callBack(data);
 		});
 	};
 	
+	persistence.loadNextScores = function(id, callBack){
+	$.get('/loadNext/' + id, function (data) {
+		success: callBack(data);
+		});
+	};
+	
+	persistence.loadPreviousScores = function(id, callBack){
+		$.get('/loadPrev/' + id, function (data) {
+			success: callBack(data);
+		});
+	};
+	
 }( window.persistence = window.persistence || {}, jQuery ));
-
-//todo: make viewing of scores much nicer
-//todo: allow loading of previous games
-//todo: allow saving of game name along with rest of viewmodel

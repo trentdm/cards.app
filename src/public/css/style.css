@@ -61,7 +61,19 @@ body {
 }
 
 #notifier {
-	text-align: center;	
+	text-align: center;
+}
+
+#notifier ul, #notifier ul li {
+	margin: 0;
+	padding: 0;
+}
+
+#notifier ul li {
+	display: inline-block;
+	list-style-type: none;
+	width: 30%;
+	text-align: center;
 }
 
 /* realignment to match board contents */
@@ -172,15 +184,15 @@ input::-webkit-inner-spin-button {
 	margin: 3px auto;
 }
 
-.popbox a:link {
+.popbox a:link, #notifier a:link {
 	color: grey;
 }
 
-.popbox a:visited {
+.popbox a:visited, #notifier a:visited {
 	color: grey;
 }
 
-.popbox a:hover {
+.popbox a:hover, #notifier a:hover {
 color: purple;
 -webkit-transition:color 500ms ease-in;
 -moz-transition:color 500ms ease-in;
