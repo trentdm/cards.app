@@ -6,3 +6,4 @@ Future tasks:
 	- improve visualization/analysis of scores over time by player and game
 	- utilize sails.js or a similar mvc module to keep the cards.app codebase as easily manageable as possible
 	- find a decent site icon
+	- find a suitable license and migrate repo to github
