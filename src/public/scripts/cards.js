@@ -7,7 +7,7 @@
 function AppViewModel() {
 	this.rounds = ko.observableArray( [ new round(1) ]);
 	this.players = ko.observableArray();
-	this.notification = ko.observable('');
+	this.notification = ko.observable("Let's play!");
 	this.newPlayerName = ko.observable();
 	this.isHighBestScore = ko.observable(true);
 

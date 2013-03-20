@@ -6,7 +6,9 @@ function initLoadedViewModel() {
 };
 
 function initLoadedScores(data) {
-	if(data == 'null') {
+	if(data == 'null' || data == '') {
+		var viewModel = new AppViewModel();
+		ko.applyBindings(viewModel);
 		viewModel.notification('No game found.');
 		return;
 	}
@@ -37,7 +39,7 @@ function loadNextScores() {
 }
 
 function loadNewScores(data) {
-	if(data == 'null') {
+	if(data == 'null' || data == '') {
 		viewModel.notification('No game found.');
 		return;
 	}
