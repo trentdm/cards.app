@@ -26,7 +26,3 @@ app.use(function(err, req, res, next){
 	  res.send(500, 'Something broke!');
 });
 app.listen(3000);
-
-//todo: site icon
-//todo: rearrange players by drag and drop -- see http://jsfiddle.net/rniemeyer/hw9B2/
-//todo: (optional) visualization of tracked scores
