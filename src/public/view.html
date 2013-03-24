@@ -12,12 +12,11 @@
 	<!--[if lt IE 9]> <link href="css/desktop.css" rel="stylesheet" media="all" /> <![endif]-->
 	<script type="text/javascript" src="scripts/jquery.min.js"></script>
 	<script type="text/javascript" src="scripts/knockout-2.1.0.js"></script>
-	<script type="text/javascript" src="scripts/knockout-sortable.min.js"></script>
 	<script type="text/javascript" src="scripts/knockout.mapping.js"></script>
 	<script type="text/javascript" src="scripts/popbox.min.js"></script>	
 	<script type="text/javascript" src="scripts/persistence.js"></script>
-	<script type="text/javascript" src="scripts/cards.js"></script>
-	<script type="text/javascript" src="scripts/view.js"></script>		
+	<script type="text/javascript" src="scripts/viewModel.js"></script>
+	<script type="text/javascript" src="scripts/existingScores.js"></script>		
 	<title>Cards - Previous Games</title>
 </head>
 <body onload='initLoadedViewModel()'>
@@ -85,7 +84,7 @@
 		</div>
 	
 		<div id="footer">
-			<a href="#" id="newGame" class="left button gray bigrounded" data-bind='click: goHome'>New Game</a>
+			<a href="/index.html" id="newGame" class="left button gray bigrounded">New Game</a>
 		</div>
 	</div>
 </body>
