@@ -11,6 +11,3 @@ Future tasks:
 	- utilize sails.js or a similar mvc module to keep the cards.app codebase as easily manageable as possible
 	
 	- find a decent site icon
-	
-	- determine whether I should bother finding a suitable license for this, and apply it if necessary
-	
