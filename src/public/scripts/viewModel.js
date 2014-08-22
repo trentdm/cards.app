@@ -161,6 +161,10 @@ function player(name) {
 	}, this);
 }
 
+function activateTaunt() {
+    $('#notifier').prepend('<img id="taunt-image" src="images/trapcard.jpg" />');
+}
+
 function notificationManager(players, isHighBestScore) {
 	this.players = players;
 	this.isHighBestScore = isHighBestScore;
@@ -180,6 +184,11 @@ function notificationManager(players, isHighBestScore) {
 		if (pointDifferential == 0)
 			notificationMessage = firstPlace.name() + " and "
 					+ secondPlace.name() + " are tied!";
+        else if(pointDifferential > secondPlace.total() * 0.1 && Math.random() < 0.1) {
+            activateTaunt();
+            notificationMessage = firstPlace.name() + " leads by "
+                + pointDifferential + " points!";
+        }
 		else
 			notificationMessage = firstPlace.name() + " leads by "
 					+ pointDifferential + " points!";
